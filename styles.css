@@ -618,6 +618,28 @@ section + section {
 
 .event-card .details strong { color: var(--ink); }
 
+.event-card .flyer-wrap {
+  grid-column: 1 / -1;
+  margin-top: 22px;
+}
+
+.event-card .flyer {
+  max-width: 320px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.event-card + .event-card {
+  margin-top: 28px;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
 /* ---------- Access ---------- */
 
 .access-table {
