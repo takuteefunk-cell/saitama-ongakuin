@@ -536,6 +536,57 @@ section + section {
 .pricing-list li .name { color: var(--ink); }
 .pricing-list li .price { font-weight: 700; color: var(--accent-dark); white-space: nowrap; }
 
+.pricing-time-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.pricing-time-option {
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 16px 8px;
+  text-align: center;
+}
+
+.pricing-time-option .minutes {
+  display: block;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.pricing-time-option .times {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+@media (max-width: 480px) {
+  .pricing-time-options { grid-template-columns: 1fr; }
+}
+
+.pricing-enrollment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: rgba(46, 196, 182, 0.1);
+  border: 1px solid var(--accent-teal);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.94rem;
+}
+
+.pricing-enrollment .label { color: var(--ink-soft); }
+.pricing-enrollment .old { color: var(--ink-soft); }
+.pricing-enrollment .new { color: var(--accent-teal); font-weight: 700; }
+
 .pricing-note {
   margin-top: 20px;
   font-size: 0.86rem;
