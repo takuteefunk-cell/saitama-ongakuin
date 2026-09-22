@@ -571,6 +571,18 @@ section + section {
 
 .instrument-chip .emoji { font-size: 1.3rem; }
 
+a.instrument-chip {
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+a.instrument-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
 /* ---------- Event ---------- */
 
 .event-card {
@@ -785,6 +797,12 @@ section + section {
   border-radius: var(--radius);
   padding: 26px 24px;
   text-align: center;
+  scroll-margin-top: 96px;
+}
+
+.instructor-card:target {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
 }
 
 .instructor-card .avatar {
