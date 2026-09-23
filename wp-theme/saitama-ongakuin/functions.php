@@ -43,7 +43,7 @@ function sao_pages() {
 	return array(
 		'home'        => array( 'label' => 'ホーム', 'slug' => '', 'id' => 0 ),
 		'about'       => array( 'label' => '教室について', 'slug' => 'about', 'id' => 33 ),
-		'instructors' => array( 'label' => '講師紹介', 'slug' => 'instructors', 'id' => 0 ),
+		'instructors' => array( 'label' => '講師紹介', 'slug' => 'instructors', 'id' => 584 ),
 		'courses'     => array( 'label' => '料金・コース', 'slug' => 'courses', 'id' => 459 ),
 		'events'      => array( 'label' => '演奏会・イベント', 'slug' => 'events', 'id' => 29 ),
 		'commission'  => array( 'label' => '制作・演奏依頼', 'slug' => 'commission', 'id' => 31 ),
