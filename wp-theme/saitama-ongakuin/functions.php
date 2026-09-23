@@ -41,16 +41,97 @@ add_action( 'wp_enqueue_scripts', function () {
  */
 function sao_pages() {
 	return array(
-		'home'        => array( 'label' => 'ホーム', 'slug' => '', 'id' => 0 ),
-		'about'       => array( 'label' => '教室について', 'slug' => 'about', 'id' => 33 ),
-		'instructors' => array( 'label' => '講師紹介', 'slug' => 'instructors', 'id' => 584 ),
-		'courses'     => array( 'label' => '料金・コース', 'slug' => 'courses', 'id' => 459 ),
-		'events'      => array( 'label' => '演奏会・イベント', 'slug' => 'events', 'id' => 29 ),
-		'commission'  => array( 'label' => '制作・演奏依頼', 'slug' => 'commission', 'id' => 31 ),
-		'access'      => array( 'label' => 'アクセス', 'slug' => 'access', 'id' => 11 ),
-		'contact'     => array( 'label' => 'お問い合わせ', 'slug' => 'contact', 'id' => 38 ),
+		'home'        => array(
+			'label' => 'ホーム', 'slug' => '', 'id' => 0,
+			'desc'  => '埼玉県富士見市鶴瀬、東武東上線鶴瀬駅から徒歩8分。開校40年以上、地域に愛される音楽教室・埼玉音楽院。ピアノ、ボーカル、ドラム、ギター、ベース、管楽器、ハンドパン、幼児科など幅広いコースをご用意。無料見学・相談受付中。',
+		),
+		'about'       => array(
+			'label' => '教室について', 'slug' => 'about', 'id' => 33,
+			'desc'  => '埼玉県富士見市鶴瀬の音楽教室・埼玉音楽院について。開校40年以上、初心者から音大受験まで、プロ講師がマンツーマンで指導します。発表会やバンドフェスティバルも開催。',
+		),
+		'instructors' => array(
+			'label' => '講師紹介', 'slug' => 'instructors', 'id' => 584,
+			'desc'  => '埼玉音楽院（富士見市鶴瀬）の講師紹介。ピアノ、ドラム、ギター、ベース、トロンボーン、フルート、ハンドパンなど、各分野の専門講師が丁寧に指導します。',
+		),
+		'courses'     => array(
+			'label' => '料金・コース', 'slug' => 'courses', 'id' => 459,
+			'desc'  => '埼玉音楽院の料金・コース案内。ピアノ、声楽、作曲から、ギター、ドラム、ボーカルなどのポピュラーコースまで。月謝は全コース共通11,000円（税込）。富士見市鶴瀬の音楽教室。',
+		),
+		'events'      => array(
+			'label' => '演奏会・イベント', 'slug' => 'events', 'id' => 29,
+			'desc'  => '埼玉音楽院（富士見市鶴瀬）の演奏会・イベント情報。生徒の発表会「楽院祭」や、世代を超えて楽しめるBAND FESTIVALなど。',
+		),
+		'commission'  => array(
+			'label' => '制作・演奏依頼', 'slug' => 'commission', 'id' => 31,
+			'desc'  => '埼玉音楽院では楽曲制作・編曲や出張演奏のご依頼を承っております。お祝い事、学校・施設イベント、企業式典など幅広く対応。',
+		),
+		'access'      => array(
+			'label' => 'アクセス', 'slug' => 'access', 'id' => 11,
+			'desc'  => '埼玉音楽院へのアクセス。〒354-0026 埼玉県富士見市鶴瀬西2-1-21。東武東上線鶴瀬駅から徒歩8分。TEL: 049-251-6969',
+		),
+		'contact'     => array(
+			'label' => 'お問い合わせ', 'slug' => 'contact', 'id' => 38,
+			'desc'  => '埼玉音楽院へのお問い合わせ。無料見学・体験レッスンのお申し込み、演奏・制作のご依頼はお電話またはフォームからお気軽にどうぞ。',
+		),
 	);
 }
+
+/**
+ * 表示中のページが sao_pages() のどれにあたるか。該当しなければ空文字。
+ */
+function sao_current_key() {
+	foreach ( array_keys( sao_pages() ) as $key ) {
+		if ( sao_is_current( $key ) ) {
+			return $key;
+		}
+	}
+	return '';
+}
+
+/**
+ * 検索結果・SNS 用の説明文。ページの「抜粋」が入っていればそれを優先する。
+ */
+function sao_description() {
+	if ( is_singular() && has_excerpt() ) {
+		return wp_strip_all_tags( get_the_excerpt() );
+	}
+	$key   = sao_current_key();
+	$pages = sao_pages();
+	if ( $key ) {
+		return $pages[ $key ]['desc'];
+	}
+	return is_singular() ? wp_trim_words( wp_strip_all_tags( get_post_field( 'post_content', get_queried_object_id() ) ), 60, '…' ) : $pages['home']['desc'];
+}
+
+function sao_og_image() {
+	return get_template_directory_uri() . '/assets/images/og-image.jpg';
+}
+
+// タイトル: 「講師紹介 | 埼玉音楽院（富士見市鶴瀬の音楽教室）」の形にする
+add_filter( 'document_title_separator', function () {
+	return '|';
+} );
+add_filter( 'document_title_parts', function ( $parts ) {
+	if ( is_front_page() ) {
+		return array( 'title' => '埼玉音楽院', 'tagline' => '富士見市鶴瀬の音楽教室（ピアノ・ボーカル・ドラム・ギター）' );
+	}
+	$parts['site'] = '埼玉音楽院（富士見市鶴瀬の音楽教室）';
+	return $parts;
+} );
+
+// Jetpack が出す OGP を、説明文とシェア用画像つきに差し替える
+add_filter( 'jetpack_open_graph_tags', function ( $tags ) {
+	$tags['og:description'] = sao_description();
+	$tags['og:image']       = sao_og_image();
+	$tags['og:image:width'] = 1200;
+	$tags['og:image:height'] = 630;
+	$tags['og:image:alt']   = '埼玉音楽院｜富士見市鶴瀬の音楽教室';
+	$tags['twitter:card']   = 'summary_large_image';
+	if ( is_front_page() ) {
+		$tags['og:title'] = '埼玉音楽院｜富士見市鶴瀬の音楽教室';
+	}
+	return $tags;
+} );
 
 function sao_page_id( $key ) {
 	$pages = sao_pages();
@@ -168,11 +249,25 @@ function sao_is_designed_content( $post = null ) {
 
 // meta description と構造化データ
 add_action( 'wp_head', function () {
-	if ( is_singular() ) {
-		$post = get_post();
-		if ( $post && has_excerpt( $post ) ) {
-			printf( '<meta name="description" content="%s">' . "\n", esc_attr( wp_strip_all_tags( get_the_excerpt( $post ) ) ) );
+	$desc = sao_description();
+	if ( $desc ) {
+		printf( '<meta name="description" content="%s">' . "\n", esc_attr( $desc ) );
+	}
+	// Jetpack の OGP が無効なときは自前で出す
+	if ( ! has_action( 'wp_head', 'jetpack_og_tags' ) ) {
+		$og = array(
+			'og:type'        => is_front_page() ? 'website' : 'article',
+			'og:site_name'   => '埼玉音楽院',
+			'og:locale'      => 'ja_JP',
+			'og:title'       => is_front_page() ? '埼玉音楽院｜富士見市鶴瀬の音楽教室' : wp_get_document_title(),
+			'og:description' => $desc,
+			'og:url'         => is_singular() ? get_permalink() : home_url( '/' ),
+			'og:image'       => sao_og_image(),
+		);
+		foreach ( $og as $prop => $val ) {
+			printf( '<meta property="%s" content="%s">' . "\n", esc_attr( $prop ), esc_attr( $val ) );
 		}
+		echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
 	}
 	if ( is_front_page() ) {
 		$data = array(
@@ -180,7 +275,14 @@ add_action( 'wp_head', function () {
 			'@type'       => 'MusicSchool',
 			'name'        => '埼玉音楽院',
 			'url'         => home_url( '/' ),
+			'image'       => sao_og_image(),
 			'telephone'   => '+81-49-251-6969',
+			'geo'         => array(
+				'@type'     => 'GeoCoordinates',
+				'latitude'  => 35.848724,
+				'longitude' => 139.533798,
+			),
+			'areaServed'  => array( '富士見市', 'ふじみ野市', '三芳町', '川越市', '志木市' ),
 			'address'     => array(
 				'@type'           => 'PostalAddress',
 				'streetAddress'   => '鶴瀬西2-1-21',
