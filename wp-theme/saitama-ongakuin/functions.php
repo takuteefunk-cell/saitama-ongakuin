@@ -18,6 +18,10 @@ add_action( 'after_setup_theme', function () {
 	register_nav_menus( array( 'primary' => 'メインメニュー' ) );
 } );
 
+// 絵文字を画像に置き換える WordPress の機能を止める（ロゴの 🎵 などがそのまま表示されるように）
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
 // 固定ページで抜粋を使えるようにする（meta description に使う）
 add_action( 'init', function () {
 	add_post_type_support( 'page', 'excerpt' );

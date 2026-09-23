@@ -1,0 +1,11 @@
+{
+  "landingPage": "/",
+  "preferredVersions": {"php": "8.2", "wp": "latest"},
+  "steps": [
+    {"step": "login"},
+    {"step": "installPlugin", "pluginData": {"resource": "wordpress.org/plugins", "slug": "contact-form-7"}},
+    {"step": "installTheme", "themeData": {"resource": "git:directory", "url": "https://github.com/takuteefunk-cell/saitama-ongakuin", "ref": "main", "path": "wp-theme/saitama-ongakuin"}, "options": {"activate": true}},
+    {"step": "writeFile", "path": "/wordpress/pages.json", "data": {"resource": "url", "url": "https://takuteefunk-cell.github.io/saitama-ongakuin/wp-theme/tools/pages.json"}},
+    {"step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; kses_remove_filters(); $f = get_posts(['post_type'=>'wpcf7_contact_form','numberposts'=>1]); $cf7 = $f ? '[contact-form-7 id=\"'.$f[0]->ID.'\"]' : ''; $d = json_decode(file_get_contents('/wordpress/pages.json'), true); foreach ($d as $k => $p) { $id = wp_insert_post(['post_type'=>'page','post_status'=>'publish','post_title'=>$p['title'],'post_name'=>$k,'post_excerpt'=>$p['excerpt'],'post_content'=>wp_slash(str_replace('{{CF7}}', $cf7, $p['content']))]); if ($k === 'home') { update_option('show_on_front','page'); update_option('page_on_front',$id); } } update_option('blogname','埼玉音楽院');"}
+  ]
+}

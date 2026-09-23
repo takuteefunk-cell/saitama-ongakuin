@@ -2,8 +2,12 @@
 
 /* ログイン中の管理バーとヘッダーが重ならないように */
 .admin-bar .site-header { top: 32px; }
+@media (max-width: 860px) {
+  .admin-bar nav.main-nav { top: 108px; }
+}
 @media (max-width: 782px) {
   .admin-bar .site-header { top: 46px; }
+  .admin-bar nav.main-nav { top: 122px; }
 }
 
 /* 外観 > メニュー で作ったメニューの現在地表示 */
