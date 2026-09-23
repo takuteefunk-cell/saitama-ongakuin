@@ -1,0 +1,964 @@
+/* ===== 埼玉音楽院 — shared styles ===== */
+
+:root {
+  --accent: #ff6b4a;
+  --accent-dark: #e9502e;
+  --accent-2: #ffb100;
+  --accent-teal: #2ec4b6;
+  --ink: #3a2e27;
+  --ink-soft: #6b5d54;
+  --paper: #fffdf9;
+  --paper-soft: #fff3e6;
+  --line: #f0dfcb;
+  --max-width: 1080px;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow: 0 14px 34px rgba(58, 46, 39, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 0.6em;
+  color: var(--ink);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.4rem, 3.2vw, 1.9rem); }
+h3 { font-size: 1.1rem; }
+
+p { margin: 0 0 1em; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Header / Nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 253, 249, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 1.2rem;
+  color: var(--ink);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.brand .mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.brand .sub {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  color: var(--ink-soft);
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span,
+.nav-toggle::before,
+.nav-toggle::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  margin: 5px 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+nav.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+nav.main-nav a {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+nav.main-nav a:hover,
+nav.main-nav a.active {
+  color: var(--accent-dark);
+}
+
+nav.main-nav a.cta {
+  display: inline-block;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+nav.main-nav a.cta:hover {
+  background: var(--accent-dark);
+  text-decoration: none;
+}
+
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+  nav.main-nav {
+    position: fixed;
+    inset: 76px 0 auto 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    max-height: calc(100vh - 76px);
+    overflow-y: auto;
+  }
+  nav.main-nav.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  nav.main-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 8px 24px 24px;
+  }
+  nav.main-nav a {
+    display: block;
+    width: 100%;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  nav.main-nav a.cta {
+    margin-top: 14px;
+    text-align: center;
+  }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #fff3e6 0%, #ffe4cf 55%, #ffd9c2 100%);
+  padding: 76px 0 88px;
+}
+
+.hero-notes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-size: 2.4rem;
+  opacity: 0.25;
+}
+
+.hero-notes span {
+  position: absolute;
+}
+
+.hero .container {
+  position: relative;
+  text-align: center;
+  max-width: 760px;
+}
+
+.hero .eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 7px 18px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  margin-bottom: 18px;
+}
+
+.hero h1 .accent {
+  color: var(--accent-dark);
+}
+
+.hero p.lead {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 46em;
+  margin: 0 auto 32px;
+}
+
+.hero-ctas {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.page-hero {
+  padding: 60px 0 34px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-soft);
+}
+
+.page-hero .eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 10px;
+}
+
+.page-hero p.lead {
+  color: var(--ink-soft);
+  max-width: 46em;
+}
+
+/* ---------- Sections ---------- */
+
+section {
+  padding: 64px 0;
+}
+
+section.alt {
+  background: var(--paper-soft);
+}
+
+section + section {
+  border-top: 1px solid var(--line);
+}
+
+.section-title {
+  margin-bottom: 34px;
+}
+
+.section-title .tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-dark);
+  background: rgba(255, 107, 74, 0.12);
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.section-title h2 { margin: 0; }
+
+.section-title p.desc {
+  color: var(--ink-soft);
+  margin-top: 10px;
+  max-width: 46em;
+}
+
+/* ---------- Cards / grids ---------- */
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 760px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.card .card-body { padding: 24px 22px; }
+
+.card .icon {
+  font-size: 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--paper-soft);
+  margin-bottom: 14px;
+}
+
+.card .card-body h3 { margin-bottom: 8px; }
+
+.card .card-body p { color: var(--ink-soft); font-size: 0.94rem; margin-bottom: 0; }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 13px 30px;
+  border: 2px solid var(--accent);
+  color: var(--accent-dark);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.btn.solid {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn.solid:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+
+.btn.ghost {
+  border-color: var(--line);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.btn.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  background: var(--paper);
+}
+
+/* ---------- Feature list ---------- */
+
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 620px) {
+  .feature-list { grid-template-columns: 1fr; }
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 0.94rem;
+}
+
+.feature-list li .check {
+  color: var(--accent-teal);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ---------- Pricing ---------- */
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+
+@media (max-width: 760px) {
+  .pricing-cards { grid-template-columns: 1fr; }
+}
+
+.pricing-card {
+  padding: 30px 28px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.pricing-card .badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--accent-teal);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.pricing-name {
+  color: var(--accent-dark);
+  margin-bottom: 4px;
+}
+
+.pricing-desc {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+
+.pricing-amount {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.pricing-amount .from {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.pricing-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pricing-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pricing-list li:last-child {
+  border-bottom: none;
+}
+
+.pricing-list li .name { color: var(--ink); }
+.pricing-list li .price { font-weight: 700; color: var(--accent-dark); white-space: nowrap; }
+
+.pricing-time-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.pricing-time-option {
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 16px 8px;
+  text-align: center;
+}
+
+.pricing-time-option .minutes {
+  display: block;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.pricing-time-option .times {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+@media (max-width: 480px) {
+  .pricing-time-options { grid-template-columns: 1fr; }
+}
+
+.pricing-enrollment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: rgba(46, 196, 182, 0.1);
+  border: 1px solid var(--accent-teal);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.94rem;
+}
+
+.pricing-enrollment .label { color: var(--ink-soft); }
+.pricing-enrollment .old { color: var(--ink-soft); }
+.pricing-enrollment .new { color: var(--accent-teal); font-weight: 700; }
+
+.pricing-note {
+  margin-top: 20px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  background: var(--paper-soft);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+
+/* ---------- Instrument list ---------- */
+
+.instrument-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 760px) {
+  .instrument-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.instrument-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.instrument-chip .emoji { font-size: 1.3rem; }
+
+a.instrument-chip {
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+a.instrument-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* ---------- Event ---------- */
+
+.event-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 620px) {
+  .event-card { grid-template-columns: 1fr; }
+}
+
+.event-card .date-block {
+  text-align: center;
+  background: var(--paper-soft);
+  border-radius: var(--radius-sm);
+  padding: 18px 10px;
+}
+
+.event-card .date-block .y {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.event-card .date-block .md {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  line-height: 1.2;
+}
+
+.event-card h3 { margin-bottom: 10px; }
+
+.event-card .details div {
+  margin-bottom: 6px;
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+}
+
+.event-card .details strong { color: var(--ink); }
+
+.event-card .flyer-wrap {
+  grid-column: 1 / -1;
+  margin-top: 22px;
+}
+
+.event-card .flyer {
+  max-width: 320px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.event-card + .event-card {
+  margin-top: 28px;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ---------- Access ---------- */
+
+.access-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.access-table tr {
+  border-bottom: 1px solid var(--line);
+}
+
+.access-table th, .access-table td {
+  text-align: left;
+  padding: 14px 12px 14px 0;
+  vertical-align: top;
+}
+
+.access-table th {
+  width: 8em;
+  color: var(--ink-soft);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.route-steps {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  counter-reset: step;
+}
+
+.route-steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 4px 0 20px 40px;
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+}
+
+.route-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.route-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 26px;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
+}
+
+.map-embed {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  display: block;
+}
+
+/* ---------- Contact ---------- */
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 700px) {
+  .contact-cards { grid-template-columns: 1fr; }
+}
+
+.contact-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  text-align: center;
+}
+
+.contact-card .icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.contact-card .value {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin: 6px 0 4px;
+}
+
+.contact-card .hint {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.contact-note {
+  margin-top: 28px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  background: var(--paper-soft);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+}
+
+/* ---------- Instructors ---------- */
+
+.instructor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 760px) {
+  .instructor-grid { grid-template-columns: 1fr; }
+}
+
+.instructor-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  text-align: center;
+  scroll-margin-top: 96px;
+}
+
+.instructor-card:target {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.instructor-card .avatar {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  overflow: hidden;
+}
+
+.instructor-card .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.instructor-card .role {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent-teal);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.instructor-card h3 { margin-bottom: 6px; }
+
+.instructor-card p {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+/* ---------- CTA band ---------- */
+
+.cta-band {
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+  padding: 56px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.cta-band h2 { color: #fff; margin-bottom: 12px; }
+.cta-band p { color: rgba(255,255,255,0.92); margin-bottom: 26px; }
+
+.cta-band .btn.solid {
+  background: #fff;
+  color: var(--accent-dark);
+  border-color: #fff;
+}
+
+.cta-band .btn.solid:hover {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+/* ---------- Footer ---------- */
+
+footer.site-footer {
+  padding: 44px 0 30px;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--line);
+  background: var(--paper-soft);
+}
+
+footer.site-footer .foot-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+footer.site-footer .foot-brand {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+footer.site-footer nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+footer.site-footer a { color: var(--ink-soft); }
+footer.site-footer a:hover { color: var(--accent-dark); }
+
+footer.site-footer .copyright {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  text-align: center;
+}

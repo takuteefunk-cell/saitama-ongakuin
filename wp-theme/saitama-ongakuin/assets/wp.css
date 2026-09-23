@@ -1,0 +1,77 @@
+/* ===== WordPress 固有の調整（見た目の本体は site.css） ===== */
+
+/* ログイン中の管理バーとヘッダーが重ならないように */
+.admin-bar .site-header { top: 32px; }
+@media (max-width: 782px) {
+  .admin-bar .site-header { top: 46px; }
+}
+
+/* 外観 > メニュー で作ったメニューの現在地表示 */
+nav.main-nav li.current-menu-item > a,
+nav.main-nav li.current_page_item > a {
+  color: var(--accent-dark);
+}
+
+/* ブロックエディタが包む要素の余白をリセット */
+.wp-block-html { margin: 0; }
+
+/* 普通に書いたページ・記事の本文 */
+.entry-content { padding-top: 8px; padding-bottom: 8px; }
+.entry-content > * + * { margin-top: 1em; }
+.entry-content img { height: auto; border-radius: var(--radius-sm); }
+.entry-content ul, .entry-content ol { padding-left: 1.4em; }
+.entry-content table { border-collapse: collapse; width: 100%; }
+.entry-content th, .entry-content td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li { padding: 14px 0; border-bottom: 1px solid var(--line); display: flex; gap: 16px; flex-wrap: wrap; }
+.post-date { color: var(--ink-soft); font-size: 0.9rem; min-width: 7em; }
+
+/* お問い合わせフォーム（Contact Form 7） */
+.contact-form-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  box-shadow: var(--shadow);
+}
+.wpcf7 p { margin: 0 0 18px; }
+.wpcf7 label { display: block; font-weight: 600; }
+.wpcf7 input[type="text"],
+.wpcf7 input[type="email"],
+.wpcf7 input[type="tel"],
+.wpcf7 input[type="url"],
+.wpcf7 select,
+.wpcf7 textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+.wpcf7 input:focus,
+.wpcf7 select:focus,
+.wpcf7 textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.wpcf7 input[type="submit"] {
+  display: inline-block;
+  padding: 14px 36px;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.wpcf7 input[type="submit"]:hover { background: var(--accent-dark); }
+.wpcf7-not-valid-tip { color: var(--accent-dark); font-size: 0.9rem; }
+.wpcf7 form .wpcf7-response-output { border-radius: var(--radius-sm); margin: 16px 0 0; }
