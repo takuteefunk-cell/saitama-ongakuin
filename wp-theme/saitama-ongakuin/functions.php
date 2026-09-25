@@ -235,6 +235,22 @@ add_action( 'template_redirect', function () {
 	}
 } );
 
+// 画像ごとの添付ファイルページ（中身がほぼ空）は検索評価を下げるので、画像そのものへ転送する
+add_action( 'template_redirect', function () {
+	if ( is_attachment() ) {
+		$file = wp_get_attachment_url( get_queried_object_id() );
+		wp_safe_redirect( $file ? $file : home_url( '/' ), 301 );
+		exit;
+	}
+} );
+
+// Google Search Console の所有権確認
+add_action( 'wp_head', function () {
+	if ( is_front_page() ) {
+		echo '<meta name="google-site-verification" content="8Vc-bBpp4vliscNcekXgnJo_L2Pv2PeyDI5oo_QGIPo">' . "\n";
+	}
+}, 1 );
+
 /**
  * 本文がテーマ用のHTML（hero / page-hero を含む）ならそのまま出す。
  * 普通に書かれた記事やページは見出し付きの枠で包む。
