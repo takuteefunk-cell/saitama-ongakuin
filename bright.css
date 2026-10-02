@@ -1,0 +1,401 @@
+/* ===== 埼玉音楽院 明るいテーマ（2026-10） =====
+   styles.css（テーマの site.css）の上に重ねる上書き。
+   WordPress では「外観 > カスタマイズ > 追加CSS」にこのファイルの中身をそのまま入れる。 */
+
+:root {
+  --accent: #1a8fd0;
+  --accent-dark: #1572ad;
+  --accent-2: #ffd93b;
+  --accent-teal: #14a06b;
+  --ink: #2f2a45;
+  --ink-soft: #5d5873;
+  --paper: #ffffff;
+  --paper-soft: #f2f9ff;
+  --line: #d9eefb;
+  --shadow: 0 12px 30px rgba(26, 143, 208, 0.12);
+  --sky: #29a8e0;
+  --sky-pale: #e3f4fd;
+  --sun: #ffd93b;
+  --pink: #e94e86;
+  --coral: #ef5a35;
+}
+
+body { background: #fff; color: var(--ink); }
+a { color: var(--accent-dark); }
+h1, h2, h3 { color: var(--ink); }
+h1, h2 { font-weight: 900; }
+
+/* ---------- Header ---------- */
+.site-header { background: rgba(255, 255, 255, 0.96); border-bottom: 4px solid var(--sun); }
+.brand { color: var(--ink); }
+.brand .mark { background: linear-gradient(135deg, var(--sky), #7fd0f5); box-shadow: 0 3px 0 var(--sun); }
+nav.main-nav ul { gap: 18px; }
+nav.main-nav a { color: var(--ink); font-weight: 700; }
+nav.main-nav a:hover,
+nav.main-nav a.active,
+nav.main-nav li.current-menu-item > a,
+nav.main-nav li.current_page_item > a { color: var(--accent); }
+nav.main-nav a.cta,
+nav.main-nav a.cta:hover {
+  background: var(--sun);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: 0 3px 0 var(--ink);
+  font-weight: 700;
+}
+nav.main-nav a.cta:hover { transform: translateY(-1px); }
+@media (max-width: 860px) {
+  nav.main-nav { background: #fff; border-bottom: 4px solid var(--sun); }
+}
+
+/* ---------- Page title band（下層ページの見出し） ---------- */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 56px 0 86px;
+  border-bottom: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 240 70 480 0 720 26 C 960 52 1200 8 1440 30 L1440 60 L0 60 Z' fill='%23fff'/%3E%3C/svg%3E") bottom / 100% 50px no-repeat,
+    radial-gradient(rgba(255, 255, 255, 0.6) 2px, transparent 2px) 0 0 / 18px 18px,
+    linear-gradient(180deg, #cfeefd 0%, #e9f7ff 100%);
+}
+.page-hero::before,
+.page-hero::after {
+  position: absolute;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+.page-hero::before { content: "♪"; right: 8%; top: 18%; font-size: 3.4rem; color: var(--sun); text-shadow: 0 3px 0 rgba(0, 0, 0, 0.06); }
+.page-hero::after { content: "♫"; right: 18%; top: 12%; font-size: 2rem; color: var(--pink); }
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero .eyebrow {
+  background: #fff;
+  color: var(--accent);
+  border: 2px solid var(--sky);
+  border-radius: 999px;
+  padding: 4px 16px;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+}
+.page-hero h1 { font-size: clamp(2rem, 5vw, 2.9rem); margin-bottom: 12px; }
+.page-hero p.lead { color: var(--ink-soft); font-weight: 500; }
+@media (max-width: 620px) {
+  .page-hero { padding: 40px 0 70px; }
+  .page-hero::before { right: 6%; top: 8%; font-size: 2.2rem; }
+  .page-hero::after { display: none; }
+}
+
+/* ---------- Sections ---------- */
+section + section { border-top: 0; }
+section.alt {
+  background-color: #eef8ff;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.9) 2px, transparent 2px);
+  background-size: 18px 18px;
+}
+.section-title { text-align: center; margin-bottom: 38px; }
+.section-title .tag {
+  display: table;
+  margin: 0 auto 12px;
+  color: #fff;
+  background: var(--accent);
+  padding: 4px 16px;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+.section-title h2 {
+  display: inline;
+  font-size: clamp(1.45rem, 3.4vw, 2rem);
+  background: linear-gradient(transparent 64%, #ffe680 64%);
+  padding: 0 0.15em;
+}
+.section-title p.desc { margin: 16px auto 0; }
+
+/* ---------- Cards ---------- */
+.card { border: 3px solid var(--sky-pale); border-radius: 22px; }
+.card:hover { box-shadow: 0 10px 0 rgba(26, 143, 208, 0.12); }
+.card .icon { background: #fff4c2; }
+.card .card-body h3 { color: var(--accent-dark); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 13px 30px;
+  border: 3px solid var(--accent);
+  color: var(--accent);
+  background: #fff;
+}
+.btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.solid,
+.btn.solid:hover,
+.cta-band .btn.solid,
+.cta-band .btn.solid:hover {
+  background: var(--sun);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 0 5px 0 var(--ink);
+}
+.btn.solid:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--ink); }
+.btn.ghost { border-color: var(--accent); color: var(--accent); background: #fff; }
+.btn.ghost:hover { background: var(--accent); color: #fff; }
+
+/* ---------- Feature list / chips ---------- */
+.feature-list li { border: 3px solid var(--sky-pale); border-radius: 16px; background: #fff; }
+.feature-list li .check { color: var(--pink); }
+.instrument-chip {
+  border: 3px solid #fff;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 4px 0 rgba(26, 143, 208, 0.16);
+  font-weight: 700;
+}
+a.instrument-chip:hover { border-color: var(--sky); color: var(--accent); }
+
+/* ---------- Pricing（料金・コース） ---------- */
+.pricing-card {
+  border: 3px solid var(--sky-pale);
+  border-radius: 26px;
+  box-shadow: 0 10px 0 rgba(26, 143, 208, 0.12);
+}
+.pricing-card .badge { background: var(--pink); }
+.pricing-name { color: var(--accent); font-weight: 900; font-size: 1.4rem; }
+.pricing-amount { font-weight: 900; }
+.pricing-list li { border-bottom: 2px dotted var(--line); }
+.pricing-list li .price { color: var(--ink); font-family: "Zen Maru Gothic", sans-serif; font-weight: 900; font-size: 1.02rem; }
+.pricing-time-option { background: var(--paper-soft); border: 3px solid var(--sky-pale); border-radius: 16px; }
+.pricing-time-option .minutes { color: var(--accent); font-weight: 900; }
+.pricing-enrollment {
+  background: var(--sun);
+  border: 0;
+  border-radius: 20px;
+  padding: 18px 20px;
+  font-weight: 700;
+}
+.pricing-enrollment .label,
+.pricing-enrollment .old { color: var(--ink); }
+.pricing-enrollment .new { color: var(--coral); font-family: "Zen Maru Gothic", sans-serif; font-weight: 900; font-size: 1.2rem; }
+.pricing-note { background: #fff7d6; border-radius: 14px; }
+
+/* ---------- Events ---------- */
+.event-card { border: 3px solid var(--sky-pale); border-radius: 26px; box-shadow: 0 10px 0 rgba(26, 143, 208, 0.12); }
+.event-card .date-block { background: var(--accent); border-radius: 18px; color: #fff; }
+.event-card .date-block .y { color: rgba(255, 255, 255, 0.9); font-weight: 700; }
+.event-card .date-block .md { color: #fff; font-weight: 900; }
+.event-card .flyer { border: 0; border-radius: 14px; }
+
+/* ---------- Access / contact ---------- */
+.access-table tr { border-bottom: 2px dotted var(--line); }
+.access-table th { color: var(--accent); font-weight: 700; }
+.route-steps li::before { background: var(--accent); }
+.route-steps li:not(:last-child)::after { background: var(--sky-pale); }
+.map-embed { border: 3px solid var(--sky-pale); border-radius: 22px; box-shadow: none; }
+.contact-card { border: 3px solid var(--sky-pale); border-radius: 22px; }
+.contact-card .value { color: var(--accent); font-weight: 900; }
+.contact-note { background: #fff7d6; border-radius: 14px; }
+
+/* ---------- Instructors ---------- */
+.instructor-card { border: 3px solid var(--sky-pale); border-radius: 24px; }
+.instructor-card:target { border-color: var(--sky); box-shadow: 0 10px 0 rgba(26, 143, 208, 0.15); }
+.instructor-card .avatar {
+  width: 96px;
+  height: 96px;
+  background: linear-gradient(135deg, var(--sky), #8fd6f7);
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 3px var(--sky);
+}
+.instructor-card .role { background: var(--accent-dark); }
+.instructor-card h3 { font-weight: 900; }
+
+/* ---------- CTA band ---------- */
+.cta-band {
+  background-color: var(--sky);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 2px, transparent 2px);
+  background-size: 16px 16px;
+  padding: 60px 0 66px;
+}
+.cta-band h2 { color: #fff; font-weight: 900; font-size: clamp(1.4rem, 4vw, 2.2rem); }
+.cta-band h2::before { content: "＼ "; }
+.cta-band h2::after { content: " ／"; }
+.cta-band p { color: #fff; font-weight: 500; }
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+  background: var(--sky-pale);
+  border-top: 0;
+  color: var(--ink-soft);
+}
+footer.site-footer .foot-brand { color: var(--ink); font-weight: 900; }
+footer.site-footer a { color: var(--ink); }
+footer.site-footer a:hover { color: var(--accent); }
+footer.site-footer .copyright { border-top: 2px dotted #bfe0f5; }
+
+/* ---------- お問い合わせフォーム（Contact Form 7） ---------- */
+.contact-form-wrap { border: 3px solid var(--sky-pale); border-radius: 24px; box-shadow: none; }
+.wpcf7 input[type="submit"],
+.wpcf7 input[type="submit"]:hover {
+  background: var(--sun);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 0 5px 0 var(--ink);
+}
+.wpcf7 input:focus,
+.wpcf7 select:focus,
+.wpcf7 textarea:focus { outline-color: var(--sky); }
+
+/* ===== トップページ（.hp） ===== */
+.hp{--b:#1a8fd0;--b-l:#29a8e0;--b-p:#e3f4fd;--y:#ffd93b;--y-d:#f5b800;--pk:#e94e86;--pk-p:#fde6ef;--g:#14a06b;--pu:#7a5bd1;--or:#ef5a35;--ink:#2f2a45;--ink2:#5d5873;color:var(--ink);overflow-x:hidden}
+.hp h1,.hp h2,.hp h3{color:var(--ink);font-family:"Zen Maru Gothic","Noto Sans JP",sans-serif}
+.hp .hp-sec{padding:72px 0;border:0}
+.hp img{display:block;width:100%;height:100%;object-fit:cover}
+.hp a{text-decoration:none}
+.hp-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:999px;font-weight:700;font-size:1.02rem;line-height:1.4;transition:transform .15s ease,box-shadow .15s ease}
+.hp-btn:hover{transform:translateY(-2px);text-decoration:none}
+.hp-btn-y{background:var(--y);color:var(--ink);border:3px solid var(--ink);box-shadow:0 5px 0 var(--ink)}
+.hp-btn-y:hover{box-shadow:0 7px 0 var(--ink)}
+.hp-btn-w{background:#fff;color:var(--b);border:3px solid var(--b)}
+.hp-btn .arr{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:.75rem;align-items:center;justify-content:center}
+/* hero */
+.hp-hero{position:relative;background:linear-gradient(180deg,#d6f0fe 0%,#eef8ff 70%,#fff 100%);padding:48px 0 110px;overflow:hidden}
+.hp-hero .container{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center;position:relative;z-index:1}
+.hp-badge{display:inline-block;background:#fff;color:var(--b);font-weight:700;font-size:.9rem;padding:6px 16px;border-radius:999px;border:2px solid var(--b-l);margin:0 0 18px}
+.hp-hero h1{font-size:clamp(2.1rem,5.2vw,3.5rem);font-weight:900;line-height:1.35;margin:0 0 20px;letter-spacing:.02em}
+.hp-mark{background:linear-gradient(transparent 60%,var(--y) 60%);padding:0 .08em}
+.hp-hero .hp-lead{font-size:1.05rem;color:var(--ink2);margin:0 0 28px;max-width:30em}
+.hp-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.hp-visual{position:relative;aspect-ratio:1/0.92}
+.hp-ph{position:absolute;overflow:hidden;background:#fff;border:7px solid #fff;box-shadow:0 18px 40px rgba(26,143,208,.22)}
+.hp-ph-main{inset:4% 14% 10% 2%;border-radius:46% 54% 50% 50%/52% 46% 54% 48%}
+.hp-ph-s1{width:38%;aspect-ratio:1;right:0;top:0;border-radius:50%}
+.hp-ph-s2{width:34%;aspect-ratio:1;right:4%;bottom:0;border-radius:50%}
+.hp-sticker{position:absolute;left:-2%;bottom:6%;width:120px;height:120px;border-radius:50%;background:var(--or);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:700;line-height:1.25;transform:rotate(-10deg);box-shadow:0 8px 0 rgba(0,0,0,.08);font-size:.85rem;z-index:2}
+.hp-sticker b{font-family:"Zen Maru Gothic",sans-serif;font-size:1.7rem;font-weight:900}
+.hp-sticker small{font-size:.7rem;opacity:.95}
+.hp-note{position:absolute;font-size:2.4rem;font-weight:900;opacity:.9;user-select:none;pointer-events:none}
+.hp-wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:80px;display:block}
+/* section heading bar */
+.hp-bar{display:block;max-width:880px;margin:0 auto 18px;text-align:center;color:#fff!important;background:var(--b);border-radius:18px;padding:16px 20px;font-weight:900;font-size:clamp(1.25rem,3.4vw,1.9rem);box-shadow:0 8px 0 var(--y);letter-spacing:.04em}
+.hp-bar.pk{background:var(--pk)}
+.hp-bar.g{background:var(--g)}
+.hp-sub{text-align:center;color:var(--ink2);max-width:42em;margin:26px auto 40px;font-weight:500}
+/* reasons */
+.hp-reasons{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.hp-reason{background:#fff;border-radius:22px;padding:30px 22px 24px;text-align:center;border:3px solid var(--b-p);position:relative}
+.hp-reason .num{position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;background:var(--y);color:var(--ink);font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:1.3rem;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 3px 0 var(--y-d)}
+.hp-reason .ico{font-size:2.6rem;line-height:1;margin:8px 0 12px}
+.hp-reason h3{font-size:1.12rem;font-weight:900;margin:0 0 8px;color:var(--b)!important}
+.hp-reason p{font-size:.92rem;color:var(--ink2);margin:0}
+/* courses */
+.hp-courses-bg{background-color:#bfe6fb;background-image:radial-gradient(rgba(255,255,255,.55) 2px,transparent 2px);background-size:18px 18px}
+.hp-h2line{display:flex;align-items:center;gap:22px;justify-content:center;font-size:clamp(1.5rem,4vw,2.3rem);font-weight:900;color:#fff!important;margin:0 0 40px;text-shadow:0 2px 0 rgba(26,143,208,.35)}
+.hp-h2line::before,.hp-h2line::after{content:"";flex:0 1 160px;height:4px;border-radius:4px;background:#fff}
+.hp-course{--c:var(--b);background:#fff;border-radius:26px;overflow:hidden;margin:0 0 30px;box-shadow:0 10px 0 rgba(26,143,208,.12)}
+.hp-course.pk{--c:var(--pk)}
+.hp-course.or{--c:var(--or)}
+.hp-course.g{--c:var(--g)}
+.hp-course.pu{--c:var(--pu)}
+.hp-course-head{background:var(--c);color:#fff;display:flex;align-items:center;gap:16px;padding:12px 24px 12px 150px;position:relative;min-height:58px;font-weight:700;font-size:1.05rem}
+.hp-course-badge{position:absolute;left:16px;top:10px;width:118px;height:118px;border-radius:50%;background:var(--c);border:5px solid #fff;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:"Zen Maru Gothic",sans-serif;font-weight:900;line-height:1.2;font-size:1.25rem;z-index:2}
+.hp-course-badge small{display:block;font-size:.72rem;font-weight:700;background:#fff;color:var(--c);border-radius:6px;padding:1px 8px;margin-top:5px}
+.hp-course-body{display:grid;grid-template-columns:1.25fr 1fr;align-items:stretch}
+.hp-course-text{padding:92px 32px 30px 40px}
+.hp-course-catch{color:var(--c);font-weight:700;font-size:1.02rem;margin:0 0 6px;border-bottom:2px dotted var(--c);display:inline-block;padding-bottom:2px}
+.hp-course h3{font-size:clamp(1.5rem,3.4vw,2rem);font-weight:900;margin:6px 0 10px;color:var(--c)!important}
+.hp-course h3 small{font-size:.55em;color:var(--ink2);font-weight:700;margin-left:4px}
+.hp-course-text p{font-size:.95rem;color:var(--ink);margin:0 0 12px}
+.hp-price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin:14px 0 18px!important}
+.hp-price .lbl{font-size:.82rem;font-weight:700;background:var(--c);color:#fff;border-radius:6px;padding:2px 10px}
+.hp-price b{font-family:"Zen Maru Gothic",sans-serif;font-size:2rem;font-weight:900;color:var(--ink)}
+.hp-price small{font-size:.8rem;color:var(--ink2)}
+.hp-more{display:inline-flex;align-items:center;gap:10px;background:var(--c);color:#fff!important;font-weight:700;border-radius:999px;padding:10px 22px;font-size:.92rem}
+.hp-more:hover{opacity:.9}
+.hp-course-photo{position:relative;margin:0;min-height:260px}
+.hp-tag{position:absolute;right:0;top:16px;background:#fff;color:var(--c);font-weight:900;font-size:.9rem;padding:4px 14px 4px 16px;border-radius:999px 0 0 999px;font-family:"Zen Maru Gothic",sans-serif}
+.hp-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
+.hp-chips a{background:#fff;color:var(--ink);font-weight:700;font-size:.9rem;padding:9px 18px;border-radius:999px;border:2px solid #fff;box-shadow:0 4px 0 rgba(26,143,208,.18)}
+.hp-chips a:hover{border-color:var(--b);color:var(--b)}
+.hp-chips-ttl{text-align:center;font-weight:900;color:var(--ink);margin:36px 0 14px;font-family:"Zen Maru Gothic",sans-serif;font-size:1.15rem}
+/* trial */
+.hp-trial-bg{background:#f2f9ff}
+.hp-trials{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.hp-trial{background:var(--pk-p);border-radius:24px;padding:40px 22px 24px;text-align:center;position:relative}
+.hp-trial .no{position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:var(--pk);color:#fff;font-family:"Zen Maru Gothic",sans-serif;font-weight:900;padding:6px 20px;border-radius:999px;font-size:1rem;white-space:nowrap}
+.hp-trial .no b{font-size:1.4rem;margin-left:2px}
+.hp-trial h3{font-size:1.2rem;font-weight:700;margin:0 0 16px}
+.hp-trial .ph{border-radius:14px;overflow:hidden;aspect-ratio:4/3;margin-bottom:14px}
+.hp-trial p{font-size:.92rem;color:var(--ink2);margin:0;text-align:left}
+.hp-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;counter-reset:f}
+.hp-flow li{list-style:none;background:#fff;border:3px solid var(--b-p);border-radius:18px;padding:18px 14px;text-align:center;position:relative;font-weight:700}
+.hp-flow li span{display:block;font-size:.85rem;font-weight:500;color:var(--ink2);margin-top:4px}
+.hp-flow li::before{counter-increment:f;content:"STEP " counter(f);display:block;color:var(--b);font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:.85rem;letter-spacing:.08em;margin-bottom:4px}
+.hp-flow li:not(:last-child)::after{content:"";position:absolute;right:-14px;top:50%;transform:translateY(-50%);border:8px solid transparent;border-left:10px solid var(--b-l)}
+.hp-flow-ttl{text-align:center;font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:1.3rem;margin:56px 0 0}
+/* campaign */
+.hp-camp{background:var(--y);border-radius:28px;padding:34px 30px;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;text-align:center;margin-top:56px;position:relative}
+.hp-camp .l{font-weight:900;font-family:"Zen Maru Gothic",sans-serif;font-size:1.3rem}
+.hp-camp .old{font-size:1.1rem;text-decoration:line-through;color:var(--ink2)}
+.hp-camp .new{font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:clamp(2rem,5vw,2.8rem);color:var(--or)}
+.hp-camp .term{font-weight:700;background:#fff;border-radius:999px;padding:6px 16px;font-size:.9rem}
+/* teachers */
+.hp-teachers{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;text-align:center}
+.hp-teachers a{color:var(--ink)}
+.hp-teachers .face{width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 0 0 3px var(--b-l);margin-bottom:10px}
+.hp-teachers b{display:block;font-size:.98rem}
+.hp-teachers span{display:block;font-size:.78rem;color:var(--ink2);line-height:1.5}
+/* event */
+.hp-event{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:center;background:#fff;border-radius:26px;padding:28px;border:3px solid var(--b-p)}
+.hp-event .flyer{border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.12)}
+.hp-event .date{display:inline-block;background:var(--b);color:#fff;font-family:"Zen Maru Gothic",sans-serif;font-weight:900;border-radius:12px;padding:6px 16px;font-size:1.15rem;margin-bottom:10px}
+.hp-event h3{font-size:clamp(1.4rem,3.4vw,2rem);font-weight:900;margin:0 0 10px}
+.hp-event p{color:var(--ink2);margin:0 0 16px}
+/* access + cta */
+.hp-access{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center}
+.hp-access div{background:#fff;border-radius:18px;padding:22px 16px;border:3px solid var(--b-p);font-weight:700}
+.hp-access div span{display:block;font-size:2rem;line-height:1;margin-bottom:8px}
+.hp-access div small{display:block;font-weight:500;color:var(--ink2);font-size:.88rem;margin-top:4px}
+.hp-cta{background-color:var(--b-l);background-image:radial-gradient(rgba(255,255,255,.22) 2px,transparent 2px);background-size:16px 16px;text-align:center;padding:64px 0 72px}
+.hp-cta h2{color:#fff!important;font-weight:900;font-size:clamp(1.5rem,4.4vw,2.5rem);margin:0 0 10px}
+.hp-cta h2::before{content:"＼ ";}
+.hp-cta h2::after{content:" ／";}
+.hp-cta p{color:#fff;margin:0 0 28px;font-weight:500}
+.hp-cta .tel{display:block;margin-top:22px;color:#fff;font-weight:700;font-size:1.05rem}
+.hp-cta .tel a{color:#fff;font-family:"Zen Maru Gothic",sans-serif;font-size:1.6rem;font-weight:900;margin-left:6px}
+.hp-credit{font-size:.75rem;color:var(--ink2);text-align:center;margin:14px 0 0}
+/* floating cta */
+.hp-float{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--b-l);border-radius:20px;padding:12px 16px 14px;box-shadow:0 10px 30px rgba(0,0,0,.18);text-align:center;color:#fff!important;display:block}
+.hp-float .s{display:block;font-weight:700;font-size:.85rem;margin-bottom:6px;color:#fff}
+.hp-float .m{display:flex;align-items:center;gap:10px;background:var(--y);color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:10px 20px;font-weight:900;font-size:1rem}
+.hp-float:hover{text-decoration:none;transform:translateY(-2px)}
+.hp-spacer{height:24px}
+@media (max-width:960px){
+.hp-reasons{grid-template-columns:repeat(2,1fr);row-gap:34px}
+.hp-teachers{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:860px){
+.hp-hero{padding:28px 0 90px}
+.hp-hero .container{grid-template-columns:1fr;gap:26px}
+.hp-visual{max-width:520px;width:100%;margin:0 auto}
+.hp-course-body{grid-template-columns:1fr}
+.hp-course-photo{order:-1;min-height:0;aspect-ratio:16/9}
+.hp-course-head{padding:12px 18px 12px 128px;font-size:.95rem}
+.hp-course-badge{width:100px;height:100px;font-size:1.05rem;top:8px}
+.hp-course-text{padding:22px 22px 26px}
+.hp-trials{grid-template-columns:1fr;row-gap:36px}
+.hp-flow{grid-template-columns:repeat(2,1fr)}
+.hp-flow li:nth-child(2)::after{display:none}
+.hp-event{grid-template-columns:1fr;text-align:center}
+.hp-event .flyer{max-width:300px;margin:0 auto}
+.hp-access{grid-template-columns:1fr}
+.hp-float{left:0;right:0;bottom:0;border-radius:18px 18px 0 0;padding:8px 12px 10px}
+.hp-float .m{justify-content:center}
+.hp-spacer{height:96px}
+}
+@media (max-width:560px){
+.hp .hp-sec{padding:56px 0}
+.hp-reasons{grid-template-columns:1fr}
+.hp-sticker{width:96px;height:96px;font-size:.75rem}
+.hp-sticker b{font-size:1.35rem}
+.hp-course-head{padding:10px 14px 10px 110px;min-height:50px}
+.hp-course-badge{width:86px;height:86px;font-size:.9rem;left:12px}
+.hp-course-badge small{font-size:.62rem;padding:1px 5px}
+.hp-h2line::before,.hp-h2line::after{flex-basis:40px}
+.hp-btn{width:100%}
+}
