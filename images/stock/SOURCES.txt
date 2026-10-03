@@ -1,0 +1,12 @@
+Unsplash License (https://unsplash.com/license) — free for commercial use, no attribution required.
+hp-hero-piano-kid.jpg   https://unsplash.com/photos/9r2d0l7EY14
+hp-hero-drums.jpg       https://unsplash.com/photos/eapx7ukkxHc
+hp-hero-singing.jpg     https://unsplash.com/photos/FOro6jhMw30
+hp-course-kids.jpg      https://unsplash.com/photos/uIFS1rqYYWc
+hp-course-classical.jpg https://unsplash.com/photos/aOLDCqOEFDo
+hp-course-jazzpop.jpg   https://unsplash.com/photos/qyyrikF1MKA
+hp-course-juken.jpg     https://unsplash.com/photos/swUFSM8lpZw
+hp-course-adult.jpg     https://unsplash.com/photos/S-vWVfbGr28
+hp-trial-1.jpg          https://unsplash.com/photos/zoP6gm9pqs4
+hp-trial-2.jpg          https://unsplash.com/photos/NVWc_fyctlk
+hp-trial-3.jpg          https://unsplash.com/photos/r2kxuoOFtHY

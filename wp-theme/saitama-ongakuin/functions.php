@@ -260,7 +260,7 @@ function sao_is_designed_content( $post = null ) {
 	if ( ! $post ) {
 		return false;
 	}
-	return (bool) preg_match( '/class="(page-)?hero[" ]/', $post->post_content );
+	return (bool) preg_match( '/class="(page-|hp-)?hero[" ]/', $post->post_content );
 }
 
 // meta description と構造化データ

@@ -55,7 +55,7 @@ nav.main-nav a.cta:hover { transform: translateY(-1px); }
   padding: 56px 0 86px;
   border-bottom: 0;
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30 C 240 70 480 0 720 26 C 960 52 1200 8 1440 30 L1440 60 L0 60 Z' fill='%23fff'/%3E%3C/svg%3E") bottom / 100% 50px no-repeat,
+    radial-gradient(70% 48px at 50% 100%, #fff 98%, transparent 100%) bottom / 100% 48px no-repeat,
     radial-gradient(rgba(255, 255, 255, 0.6) 2px, transparent 2px) 0 0 / 18px 18px,
     linear-gradient(180deg, #cfeefd 0%, #e9f7ff 100%);
 }
