@@ -6,7 +6,7 @@ OUT = pathlib.Path(__file__).resolve().parent / "pages.json"
 PAGES = {
     "home": "index.html", "about": "about.html", "instructors": "instructors.html",
     "courses": "courses.html", "events": "events.html", "commission": "commission.html",
-    "access": "access.html", "contact": "contact.html",
+    "access": "access.html", "contact": "contact.html", "bandfes20": "bandfes20.html",
 }
 KEYS = {v[:-5]: k for k, v in PAGES.items()}
 KEYS["index"] = "home"

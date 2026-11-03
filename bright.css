@@ -277,7 +277,7 @@ footer.site-footer .copyright { border-top: 2px dotted #bfe0f5; }
 .hp-bar.g{background:var(--g)}
 .hp-sub{text-align:center;color:var(--ink2);max-width:42em;margin:26px auto 40px;font-weight:500}
 /* reasons */
-.hp-reasons{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.hp-reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .hp-reason{background:#fff;border-radius:22px;padding:30px 22px 24px;text-align:center;border:3px solid var(--b-p);position:relative}
 .hp-reason .num{position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;background:var(--y);color:var(--ink);font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:1.3rem;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 3px 0 var(--y-d)}
 .hp-reason .ico{font-size:2.6rem;line-height:1;margin:8px 0 12px}
@@ -399,3 +399,15 @@ footer.site-footer .copyright { border-top: 2px dotted #bfe0f5; }
 .hp-h2line::before,.hp-h2line::after{flex-basis:40px}
 .hp-btn{width:100%}
 }
+
+/* ===== バンフェス開催報告（/bandfes20/） ===== */
+.bf-main { margin: 0 auto; max-width: 960px; border-radius: 22px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 14px 34px rgba(26,143,208,.2); }
+.bf-main img { display: block; width: 100%; height: auto; }
+.bf-info { max-width: 760px; margin: 28px auto 0; display: grid; gap: 8px; }
+.bf-info div { background: var(--paper-soft); border: 3px solid var(--sky-pale); border-radius: 14px; padding: 10px 16px; font-size: .94rem; }
+.bf-info b { display: inline-block; min-width: 3.5em; margin-right: 10px; color: #fff; background: var(--accent); border-radius: 999px; padding: 1px 12px; font-size: .8rem; text-align: center; }
+.bf-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.bf-fig { margin: 0; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 16px; border: 3px solid #fff; box-shadow: 0 8px 0 rgba(26,143,208,.12); background: #fff; }
+.bf-fig img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.bf-note { text-align: center; color: var(--ink-soft); font-size: .84rem; margin: 28px 0 0; }
+@media (max-width: 760px) { .bf-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
