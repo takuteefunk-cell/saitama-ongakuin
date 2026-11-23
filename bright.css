@@ -411,3 +411,8 @@ footer.site-footer .copyright { border-top: 2px dotted #bfe0f5; }
 .bf-fig img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .bf-note { text-align: center; color: var(--ink-soft); font-size: .84rem; margin: 28px 0 0; }
 @media (max-width: 760px) { .bf-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+/* トップページ・アクセス欄の入口写真 */
+.hp-entrance { margin: 30px auto 0; max-width: 760px; border-radius: 22px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 14px 34px rgba(26,143,208,.2); aspect-ratio: 16 / 10; }
+.hp-entrance img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hp-entrance + .hp-access { margin-top: 28px !important; }

@@ -5,7 +5,6 @@
       <div>
         <div class="foot-brand"><?php bloginfo( 'name' ); ?></div>
         <div>〒354-0026 埼玉県富士見市鶴瀬西2-1-21</div>
-        <div>TEL: <a href="tel:0492516969">049-251-6969</a></div>
       </div>
       <nav>
         <?php sao_nav( 'footer' ); ?>
